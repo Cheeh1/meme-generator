@@ -1,0 +1,122 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: #E5E5E5;;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #fff;
+  margin: 150px 400px;
+  padding-bottom: 30px;
+}
+
+.nav-flex {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+  padding: 20px 50px;
+}
+
+.nav-txt {
+  color: rgb(230, 222, 222);
+  font-weight: 500;
+  margin-top: 5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.main-flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.txt-field {
+  width: 230px;
+  height: 35px;
+  border: 1px solid #D5D4D8;
+  margin-top: 40px;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.txt-field::placeholder {
+  font-size: 1.6rem;
+}
+
+.btn {
+  width: 477px;
+  height: 40px;
+  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  border-radius: 5px;
+  margin: 20px 45px;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Karla', sans-serif;
+}
+
+/* .main-img {
+  background: url(/image/memeimg.png);
+  border-radius: 2px;
+  width: 477px;
+  height: 268px;
+  margin: 10px 45px;
+} */
+
+.main-img {
+  border-radius: 2px;
+  width: 477px;
+  height: 268px;
+  margin: 10px 45px;
+}
+
+.meme {
+  position: relative;
+}
+
+.meme--image {
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+.meme--text {
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 15px 0;
+  padding: 0 5px;
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow:
+      2px 2px 0 #000,
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      0 2px 0 #000,
+      2px 0 0 #000,
+      0 -2px 0 #000,
+      -2px 0 0 #000,
+      2px 2px 5px #000;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.top {
+  top: 0;
+}
