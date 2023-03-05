@@ -1,5 +1,5 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Content() {
   const [meme, setMeme] = useState({
@@ -26,14 +26,28 @@ function Content() {
   // }, []);
 
   // using "async" and "await" to call the API
+  // useEffect(() => {
+  //   async function getMemes() {
+  //     const res = await fetch("https://api.imgflip.com/get_memes")
+  //     const data = await res.json()
+  //     setAllMemes(data.data.memes)
+  //   }
+  //   getMemes()
+  // },[])
+
+  // using axios to call the Api
   useEffect(() => {
     async function getMemes() {
-      const res = await fetch("https://api.imgflip.com/get_memes")
-      const data = await res.json()
-      setAllMemes(data.data.memes)
+      try {
+        const res = await axios.get("https://api.imgflip.com/get_memes");
+        setAllMemes(res.data.data.memes)
+        console.log(res)
+      } catch (err) {
+        console.log(err)
+      }
     }
     getMemes()
-  },[])
+  }, [])
 
   function getMemeImg() {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
