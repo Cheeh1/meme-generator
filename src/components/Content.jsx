@@ -41,7 +41,6 @@ function Content() {
       try {
         const res = await axios.get("https://api.imgflip.com/get_memes");
         setAllMemes(res.data.data.memes)
-        console.log(res)
       } catch (err) {
         console.log(err)
       }
