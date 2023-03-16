@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useQuery } from "react-query";
 
 function Content() {
   const [meme, setMeme] = useState({
@@ -16,37 +17,31 @@ function Content() {
     }));
   };
 
-  const [allMemes, setAllMemes] = useState([]);
-
-  // using "then" and "fetch" for calling the API
-  // useEffect(() => {
-  //   fetch("https://api.imgflip.com/get_memes")
-  //     .then((res) => res.json())
-  //     .then((data) => setAllMemes(data.data.memes));
-  // }, []);
-
-  // using "async" and "await" to call the API
-  // useEffect(() => {
-  //   async function getMemes() {
-  //     const res = await fetch("https://api.imgflip.com/get_memes")
-  //     const data = await res.json()
-  //     setAllMemes(data.data.memes)
-  //   }
-  //   getMemes()
-  // },[])
+  // const [allMemes, setAllMemes] = useState([]);
 
   // using axios to call the Api
-  useEffect(() => {
-    async function getMemes() {
-      try {
-        const res = await axios.get("https://api.imgflip.com/get_memes");
-        setAllMemes(res.data.data.memes)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getMemes()
-  }, [])
+  // useEffect(() => {
+  //   async function getMemes() {
+  //     try {
+  //       const res = await axios.get("https://api.imgflip.com/get_memes");
+  //       setAllMemes(res.data.data.memes)
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
+  //   getMemes()
+  // }, [])
+
+  // using react query for managing API call
+  const { isLoading, error, data} =  useQuery(
+    'memes', () => axios.get('https://api.imgflip.com/get_memes')
+    .then((res) => res.data)
+  )
+
+  if (isLoading) return <div>Loading...</div>
+  if (error) return <div>Error: {error.message}</div>
+
+  const allMemes = data.data.memes
 
   function getMemeImg() {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
